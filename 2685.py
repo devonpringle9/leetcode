@@ -11,6 +11,9 @@ class Solution(object):
         :type edges: List[List[int]]
         :rtype: int
         """
+        #sort each edge
+        for edge in edges:
+            edge.sort()
         connected_graphs = [[x] for x in range(n)]
         for edge in edges:
             print(f"adding {edge} to {connected_graphs}")
@@ -31,6 +34,8 @@ class Solution(object):
                 connected_graphs[graph_0] = list(set(connected_graphs[graph_0] + connected_graphs[graph_1]))
                 connected_graphs.pop(graph_1)
             print(f'Now there is {connected_graphs}')
+        for graph in connected_graphs:
+            graph.sort()
         print(f'Final set of graphs are {connected_graphs}')
 
         # Objective: return True if the set of vertices is a complete graph
@@ -57,4 +62,6 @@ class Solution(object):
         print(f"Total complete graphs is {total_complete_graphs}")
         return total_complete_graphs
 
-Solution().countCompleteComponents(6, [[0,1],[0,2],[1,2],[3,4]])
+# Solution().countCompleteComponents(6, [[0,1],[0,2],[1,2],[3,4]])
+# Solution().countCompleteComponents(2, [[1,0]])
+Solution().countCompleteComponents(10, [[1,5],[2,1],[3,1],[7,0],[8,7],[6,7],[9,4]])
