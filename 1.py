@@ -5,11 +5,10 @@ class Solution(object):
 		:type target: int
 		:rtype: List[int]
 		"""
+		adds_to = {}
 		for i_index, i in enumerate(nums):
-			for j_index, j in enumerate(nums):
-				if i_index == j_index:
-					continue
-				if i + j == target:
-					return [i_index, j_index]
+			if i in adds_to:
+				return [i_index, adds_to[i]]
+			adds_to[target - i] = i_index
 
 print(Solution().twoSum([2, 7, 11, 15], 9))
